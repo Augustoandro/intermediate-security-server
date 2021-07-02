@@ -6,7 +6,12 @@ We are not responsible if your system is compromised.
 All components of the application are to be run on the same machine, including the web platform, file uploader and all the scripts.
 If you wish that the scripts and services keep running even after you close terminal session, use ```screen```.
 
-A general description:<br />
+HOW IT WORKS:<br />
+When a file is uploaded via the file upload application, the file is stored temporarily at the server and a copy of it is sent to Virustotal via its API. We receive 5 different responses from each of the antiviruses, namely, Bitdefender, Avast, AVG, Kaspersky and McAfee. The responses are recorded in the database (True or False). And the number of each type of response is calculated.<br />
+If the number of antivirus detecting the file as Malicious (True) is at least two, the file is declared malicious and is deleted, also a response is sent back to the file upload application saying "The file has been found to be unsuitable for upload".<br />
+If only one antivirus detects the file as Malicious, it is declared Suspicious. And if all antivirus detect the file as Safe (False) then it is forwarded to the cloud storage bucket and a response is sent back to the file upload application saying "File has been successfully uploaded".
+
+A general description of the folders in the repo:<br />
 The files in web_platform folder is the component that users interacts with for managing their storage buckets, Access Key IDs and Secret Keys. In short, that's the website where you signup for our services and login when required to make configuration changes to your bucket or credentials.<br />
 online_file_uploader is the file upload application that sends the files for scanning and successive upload to AWS S3 bucket if found Safe or deletion if it is found to be Malicious.<br />
 cloud_api folder is the API service that makes communication possible between backend and the ReactJS frontend.<br />
@@ -18,7 +23,7 @@ One last thing, before hosting the application make necessary changes in the fol
 a. cloud_api/index.js<br />
 b. online_file_uploader/upload.php<br />
 c. scripts/assessor1.py<br />
-d. web_platform/firebase-config.js<br />
+d. web_platform/src/firebase-config.js<br />
 Necessary instructions for editing these files have been added as comments within the files itself. Follow the instructions properly.
 
 Let's get to running this application.
