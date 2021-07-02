@@ -8,8 +8,8 @@ const mysql = require("mysql");
 
 const db = mysql.createPool({
   host: "localhost",
-  user: "admin_augustus",
-  password: "DemonHalfas@1729",
+  user: "mysql_username",
+  password: "mysql_password",
   database: "intersec",
 });
 app.use(cors());
@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/api/get/countunsafe", (req, res) => {
   const sqlSelect =
-    "SELECT COUNT(*) AS countunsafe FROM upload_files WHERE vendor='swapneel.esiot@gmail.com' AND final_res='Malicious'";
+    "SELECT COUNT(*) AS countunsafe FROM upload_files WHERE vendor='vendor_mail' AND final_res='Malicious'";
   db.query(sqlSelect, (err, result) => {
     res.send(result);
   });
@@ -26,7 +26,7 @@ app.get("/api/get/countunsafe", (req, res) => {
 
 app.get("/api/get/countsafe", (req, res) => {
   const sqlSelect =
-    "SELECT COUNT(*) AS countsafe FROM upload_files WHERE vendor='swapneel.esiot@gmail.com' AND final_res='Safe'";
+    "SELECT COUNT(*) AS countsafe FROM upload_files WHERE vendor='vendor_mail' AND final_res='Safe'";
   db.query(sqlSelect, (err, result) => {
     res.send(result);
   });
