@@ -28,10 +28,10 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Upload')
 
       if(move_uploaded_file($fileTmpPath, $dest_path)) 
       {
-        $uploadFileDir2 = '/home/admin2/web/upload.noblesseinfosec.com/public_html/uploaded_files/'.$newFileName;
+        $uploadFileDir2 = 'your_document_root/uploaded_files/'.$newFileName;
         $servername = "localhost";
-        $username = "admin_augustus";
-        $password = "DemonHalfas@1729";
+        $username = "mysql_username";
+        $password = "mysql_password";
         $dbname = "intersec";
         // Create connection
         $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -40,7 +40,7 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Upload')
         	die("Connection failed: " . mysqli_connect_error());
         }
         $sql = "INSERT INTO upload_files (vendor, file_upld)
-        VALUES ('swapneel.esiot@gmail.com', '".$uploadFileDir2."')";
+        VALUES ('vendor_mail', '".$uploadFileDir2."')";
         if (mysqli_query($conn, $sql)) {
         	echo "New record created successfully";
         } else {
