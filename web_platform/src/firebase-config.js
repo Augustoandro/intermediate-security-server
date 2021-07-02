@@ -1,3 +1,5 @@
+// This is a sample file. Replace this file with your own firebase-config.js, which is auto-generated when you create a project on Firebase.
+
 import firebase from "firebase/app";
 import "firebase/auth";
 
