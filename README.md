@@ -7,9 +7,9 @@ All components of the application are to be run on the same machine, including t
 If you wish that the scripts and services keep running even after you close terminal session, use ```screen```.
 
 A general description:
-The files in web_platform folder is the component that users interacts with for managing their storage buckets, Access Key IDs and Secret Keys. In short, that's the website where you signup for our services and login when required to make configuration changes to your bucket or credentials.
-online_file_uploader is the file upload application that sends the files for scanning and successive upload to AWS S3 bucket if found Safe or deletion if it is found to be Malicious.
-cloud_api folder is the API service that makes communication possible between backend and the ReactJS frontend.
+The files in web_platform folder is the component that users interacts with for managing their storage buckets, Access Key IDs and Secret Keys. In short, that's the website where you signup for our services and login when required to make configuration changes to your bucket or credentials.<br />
+online_file_uploader is the file upload application that sends the files for scanning and successive upload to AWS S3 bucket if found Safe or deletion if it is found to be Malicious.<br />
+cloud_api folder is the API service that makes communication possible between backend and the ReactJS frontend.<br />
 Run intersec.sql in PHPMyAdmin to create the required database and tables for proper functioning of the application. Or copy paste the commands within the file in MySQL command line.
 
 As of now, we only support AWS S3 buckets for this application. You will only receive runtime errors if you add a bucket from any other cloud service provider.
