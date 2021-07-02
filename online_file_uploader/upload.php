@@ -25,13 +25,16 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Upload')
       // directory in which the uploaded file will be moved
       $uploadFileDir = './uploaded_files/';
       $dest_path = $uploadFileDir . $newFileName;
+      
+      // Replace your_document_root with the document root where you are hosting this file in line 34, for example, in case of Archlinux it is /srv/http and for
+      // Debian, Ubuntu etc it is /var/www/html
 
       if(move_uploaded_file($fileTmpPath, $dest_path)) 
       {
-        $uploadFileDir2 = 'your_document_root/uploaded_files/'.$newFileName;
+        $uploadFileDir2 = 'your_document_root/uploaded_files/'.$newFileName;    
         $servername = "localhost";
-        $username = "mysql_username";
-        $password = "mysql_password";
+        $username = "mysql_username";                                       // Replace mysql_username with your own MySQL username
+        $password = "mysql_password";                                       // Replace mysql_password with your own MySQL password
         $dbname = "intersec";
         // Create connection
         $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -39,6 +42,11 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Upload')
         if (!$conn) {
         	die("Connection failed: " . mysqli_connect_error());
         }
+        
+        // We originally hardcoded a signed up user's email in place of vendor_mail in line 51.
+        // Since according to our project developing a file upload application is the signed up user's job, we just hardcoded a email ID.
+        // Replace vendor_mail with a signed up user's email ID.
+        
         $sql = "INSERT INTO upload_files (vendor, file_upld)
         VALUES ('vendor_mail', '".$uploadFileDir2."')";
         if (mysqli_query($conn, $sql)) {
