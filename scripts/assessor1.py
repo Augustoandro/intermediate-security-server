@@ -6,8 +6,8 @@ import boto3
 
 mydb = mysql.connector.connect(
   host="localhost",
-  user="admin_augustus",
-  password="DemonHalfas@1729",
+  user="mysql_username",
+  password="mysql_password",
   database="intersec"
 )
 
@@ -57,7 +57,7 @@ if rec_id2 != file_id1:
 
 	#print(file_path)
 
-	cmd1 = "curl --request POST --url 'https://www.virustotal.com/vtapi/v2/file/scan' --form 'apikey=48035baf20b2495198bacaca385c461382384f9e39b9b5387d05ec90429601c7' --form 'file=@"
+	cmd1 = "curl --request POST --url 'https://www.virustotal.com/vtapi/v2/file/scan' --form 'apikey=your_virustotal_apikey' --form 'file=@"
 	file_path2 = file_path + "'"
 	#print(file_path2)
 	cmd_full = cmd1 + file_path2
@@ -67,10 +67,10 @@ if rec_id2 != file_id1:
 	pattern = "file\/(.*?)\/"
 	substring = re.search(pattern, response).group(1)
 	print(substring)
-	params = {'apikey': '48035baf20b2495198bacaca385c461382384f9e39b9b5387d05ec90429601c7', 'resource': substring}
+	params = {'apikey': 'your_virustotal_apikey', 'resource': substring}
 	headers = {
 	"Accept-Encoding": "gzip, deflate",
-	"User-Agent": "https://noblesseinfosec.com"
+	"User-Agent": "http://localhost"
 	}
 	response = requests.get('https://www.virustotal.com/vtapi/v2/file/report', params = params, headers = headers)
 	json_response = response.json()
