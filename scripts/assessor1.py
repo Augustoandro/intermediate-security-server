@@ -6,8 +6,8 @@ import boto3
 
 mydb = mysql.connector.connect(
   host="localhost",
-  user="mysql_username",
-  password="mysql_password",
+  user="mysql_username",                                                  # Replace mysql_username with your own MySQL username
+  password="mysql_password",                                              # Replace mysql_password with your own MySQL password
   database="intersec"
 )
 
@@ -56,6 +56,7 @@ if rec_id2 != file_id1:
 		file_path = y[0]
 
 	#print(file_path)
+	# Replace your_virustotal_apikey in line 61 and 71 with your own Virustotal API key
 
 	cmd1 = "curl --request POST --url 'https://www.virustotal.com/vtapi/v2/file/scan' --form 'apikey=your_virustotal_apikey' --form 'file=@"
 	file_path2 = file_path + "'"
